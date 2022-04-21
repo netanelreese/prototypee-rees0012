@@ -20,20 +20,20 @@
 
 <!-- Declare the root pane type and set 'root' as its FXCSS class name. -->
 <fx:root xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.layout.BorderPane"
+         type="javafx.scene.layout.VBox"
          styleClass="root">
 
   <!-- TODO #02: Layout a hierarchy of widgets inside the root pane. -->
   <!-- Give each widget the same fx:id as its member name in SummaryFXML. -->
   <!-- Add any necessary imports (like in Java files) above. -->
-  <top>
-    <Label fx:id="summaryTitle"/>
-    <ImageView fx:id="summaryImage"/>
-    <Label fx:id="summaryYear"/>
-    <Label fx:id="summaryGenre"/>
-    <Label fx:id="summaryRating"/>
-    <Label fx:id="summaryRuntime"/>
-  </top>
+  <children>
+		    <Label fx:id="summaryTitle"/>
+			<ImageView fx:id="summaryImage"/>
+		    <Label fx:id="summaryYear"/>
+		    <Label fx:id="summaryGenre"/>
+		    <Label fx:id="summaryRating"/>
+		    <Label fx:id="summaryRuntime"/>
+  </children>
 
   <!-- Declare which FXCSS files to load styles from. -->
   <stylesheets>

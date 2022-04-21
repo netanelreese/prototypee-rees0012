@@ -19,10 +19,11 @@ import javafx.fxml.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 //******************************************************************************
 
-public class SummaryFXML extends BorderPane
+public class SummaryFXML extends VBox
 {
 	//**********************************************************************
 	// Private Members
