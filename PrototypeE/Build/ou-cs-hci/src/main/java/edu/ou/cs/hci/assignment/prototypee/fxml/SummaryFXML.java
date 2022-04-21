@@ -32,6 +32,11 @@ public class SummaryFXML extends BorderPane
 	// use in the summary area of the CollectionPane. The names must match both
 	// the summary widgets in CollectionPane.java and the fx:ids in Summary.fxml
 	@FXML public Label			summaryTitle;
+	@FXML public ImageView		summaryImage;
+	@FXML public Label			summaryYear;
+	@FXML public Label			summaryGenre;
+	@FXML public Label 			summaryRating;
+	@FXML public Label			summaryRuntime;
 
 	//**********************************************************************
 	// Constructors and Finalizer

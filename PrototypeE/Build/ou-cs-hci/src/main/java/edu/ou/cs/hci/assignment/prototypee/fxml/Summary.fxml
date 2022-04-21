@@ -28,6 +28,11 @@
   <!-- Add any necessary imports (like in Java files) above. -->
   <top>
     <Label fx:id="summaryTitle"/>
+    <ImageView fx:id="summaryImage"/>
+    <Label fx:id="summaryYear"/>
+    <Label fx:id="summaryGenre"/>
+    <Label fx:id="summaryRating"/>
+    <Label fx:id="summaryRuntime"/>
   </top>
 
   <!-- Declare which FXCSS files to load styles from. -->

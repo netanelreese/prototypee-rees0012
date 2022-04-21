@@ -27,6 +27,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.*;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.*;
+import javafx.fxml.FXML;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -384,10 +385,15 @@ public final class CollectionPane extends AbstractPane
 			// The names must match the ones in Summary.FXML. Hint: See the list
 			// of members above to see which widgets are used in the summary...
 			summaryTitle = pane.summaryTitle;
+			summaryImage = pane.summaryImage;
+			summaryYear = pane.summaryYear;
+			summaryGenre = pane.summaryGenre;
+			summaryRating = pane.summaryRating;
+			summaryRuntime = pane.summaryRuntime;
 
 			// ...then swap the comments on the next two lines to use the FXML.
-			//return pane;					// <--- Uncomment this line
-			return buildMovieView();		// <--- Comment this line
+			return pane;					// <--- Uncomment this line
+			//return buildMovieView();		// <--- Comment this line
 		}
 		catch (Exception ex)
 		{
