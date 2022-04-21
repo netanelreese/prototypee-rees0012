@@ -222,12 +222,15 @@ public final class CoverFlow extends AbstractPane
 		leftOne = new Button("<");
 		leftFive = new Button("<<");
 		leftAll = new Button("<<<");
+		left = new Group();
 		left.getChildren().addAll(leftOne, leftFive, leftAll);
+		flow.getChildren().add(leftOne);
 		rightOne = new Button(">");
 		rightFive = new Button(">>");
 		rightAll = new Button(">>>");
+		right = new Group();
 		right.getChildren().addAll(rightOne, rightFive, rightAll);
-		
+		flow.getChildren().add(right);
 		
 		return base;
 	}
@@ -403,6 +406,10 @@ public final class CoverFlow extends AbstractPane
 		// your buttons below. Apply the expected enabling/disabling to each
 		// one. One way to do this is to use the flow's width and height to
 		// calculate absolute positions and sizes for each button.
+		leftOne.setTranslateX(cx);
+		leftOne.setTranslateY(cy);
+		right.setTranslateX(cx);
+		right.setTranslateY(cy);
 	}
 
 	private void	updateAnimation(Movie movie)
