@@ -1,0 +1,41 @@
+/******************************************************************************/
+/*                                                                            */
+/* This file defines the styles of the summary pane.                          */
+/*                                                                            */
+/* There are many FXCSS properties you can use to reproduce the JavaFX API.   */
+/*                                                                            */
+/* Go to https://docs.oracle.com/javase/8/javase-clienttechnologies.htm       */
+/*   In the Reference section, click CSS Reference Guide.                     */
+/*                                                                            */
+/*   To style a widget, look up the properties of its class and superclasses, */
+/*     e.g. for a Label: Node > Parent > Region > Control > Labeled > Label   */
+/*   For any given property, look up allowed values by their <type>.          */
+/*   For example, look under <paint> for gradients and <effects> for shadows. */
+/*                                                                            */
+/******************************************************************************/
+
+/* TODO #03: Define styling for widget classes and instances in Summary.fxml  */
+
+/******************************************************************************/
+/* Styling for the root BorderPane of the Summary itself                      */
+/******************************************************************************/
+
+.root
+{
+    -fx-background-color: #000000;  /* Just an example. Change/replace me! */
+}
+
+/******************************************************************************/
+/* Styling for Widgets in the Summary                                         */
+/******************************************************************************/
+
+.label
+{
+    -fx-font-family: serif;        /* Just an example. Change/replace me!  */
+}
+
+.image-view
+{
+}
+
+/******************************************************************************/

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--*************************************************************************-->
+<!--                                                                         -->
+<!-- This file defines structure of the summary pane.                        -->
+<!--                                                                         -->
+<!-- There are many FXML structures you can use to reproduce the JavaFX API. -->
+<!--                                                                         -->
+<!-- Go to https://docs.oracle.com/javase/8/javase-clienttechnologies.htm    -->
+<!--   In the Reference section, click Introduction to FXML.                 -->
+<!--   In the User Interface Components section, click Build UI with FXML.   -->
+<!--                                                                         -->
+<!--*************************************************************************-->
+
+<!-- Import packages like in Java files. -->
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Declare the root pane type and set 'root' as its FXCSS class name. -->
+<fx:root xmlns:fx="http://javafx.com/fxml"
+         type="javafx.scene.layout.BorderPane"
+         styleClass="root">
+
+  <!-- TODO #02: Layout a hierarchy of widgets inside the root pane. -->
+  <!-- Give each widget the same fx:id as its member name in SummaryFXML. -->
+  <!-- Add any necessary imports (like in Java files) above. -->
+  <top>
+    <Label fx:id="summaryTitle"/>
+  </top>
+
+  <!-- Declare which FXCSS files to load styles from. -->
+  <stylesheets>
+    <URL value="@Summary.css"/>
+  </stylesheets>
+
+</fx:root>
+
+<!--*************************************************************************-->

@@ -1,0 +1,96 @@
+/******************************************************************************/
+
+/* This file defines styles of the about page. There are many CSS properties. */
+/* See https://www.w3schools.com/css/ for reference and help.                 */
+
+/******************************************************************************/
+
+body
+{
+    background-color: #fffff0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 2px 2px 2px 2px;
+}
+
+/******************************************************************************/
+/* Links                                                                    */
+/******************************************************************************/
+
+a:link
+{
+    color: #606060;
+    font-weight: bold;
+    text-decoration: underline;
+    text-shadow: 0px 0px 6px #ffffc0;
+}
+
+a:visited
+{
+    color: #a0a0a0;
+}
+
+a:hover
+{
+    color: #404040;
+}
+
+a:active
+{
+    color: #000000;
+}
+
+/******************************************************************************/
+/* Footer                                                                     */
+/******************************************************************************/
+
+.about-grid
+{
+    display: grid;
+    grid-template-columns: 40px 120px 120px 40px;
+    grid-template-rows: 124px 28px 36px 20px 10px;
+
+    align-content: center;
+    justify-content:center;
+
+    padding: 4px;
+    grid-gap: 4px;
+}
+
+.about-border
+{
+    border: 3px solid #b0c0ff;
+    border-radius: 16px;
+}
+
+.detail-very-high
+{
+    color: #808000;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px 0px 6px 0px;
+    text-shadow: 0px 0px 12px #0000ff;
+}
+
+.detail-high
+{
+    color: #404040;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.detail-medium
+{
+    color: #606060;
+    font-size: 14px;
+}
+
+.detail-low
+{
+    color: #808080;
+    font-size: 10px;
+    font-style: italic;
+}
+
+
+/******************************************************************************/
