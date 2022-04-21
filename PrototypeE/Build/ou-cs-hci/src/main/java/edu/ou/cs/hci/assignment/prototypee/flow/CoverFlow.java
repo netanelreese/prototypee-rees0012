@@ -87,7 +87,14 @@ public final class CoverFlow extends AbstractPane
 	private Animation					animation;
 
 	// TODO #04a: Add members for your left and right navigation buttons here.
-
+	private Button leftOne;
+	private Button leftFive;
+	private Button leftAll;
+	private Button rightOne;
+	private Button rightFive;
+	private Button rightAll;
+	private Group left;
+	private Group right;
 	// Handlers
 	private final ActionHandler		actionHandler;
 
@@ -212,7 +219,16 @@ public final class CoverFlow extends AbstractPane
 
 		// TODO #04b: Create your buttons and add them to the base pane on top.
 		// A good way is to put them all in a Group and add that to the pane.
-
+		leftOne = new Button("<");
+		leftFive = new Button("<<");
+		leftAll = new Button("<<<");
+		left.getChildren().addAll(leftOne, leftFive, leftAll);
+		rightOne = new Button(">");
+		rightFive = new Button(">>");
+		rightAll = new Button(">>>");
+		right.getChildren().addAll(rightOne, rightFive, rightAll);
+		
+		
 		return base;
 	}
 
@@ -223,11 +239,23 @@ public final class CoverFlow extends AbstractPane
 	// TODO #5a: Register each of your buttons with the action handler.
 	private void	registerWidgetHandlers()
 	{
+		leftOne.setOnAction(actionHandler);
+		leftFive.setOnAction(actionHandler);
+		leftAll.setOnAction(actionHandler);
+		rightOne.setOnAction(actionHandler);
+		rightFive.setOnAction(actionHandler);
+		rightAll.setOnAction(actionHandler);
 	}
 
 	// TODO #5b: Unregister each of your buttons with the action handler.
 	private void	unregisterWidgetHandlers()
 	{
+		leftOne.setOnAction(null);
+		leftFive.setOnAction(null);
+		leftAll.setOnAction(null);
+		rightOne.setOnAction(null);
+		rightFive.setOnAction(null);
+		rightAll.setOnAction(null);
 	}
 
 	//**********************************************************************
