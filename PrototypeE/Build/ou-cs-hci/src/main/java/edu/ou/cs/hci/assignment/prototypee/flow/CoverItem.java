@@ -13,9 +13,11 @@
 
 package edu.ou.cs.hci.assignment.prototypee.flow;
 
+import java.awt.Insets;
 //import java.lang.*;
 import java.util.List;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.effect.*;
@@ -43,6 +45,8 @@ public final class CoverItem extends StackPane
 
 	public static final String	RSRC		= "edu/ou/cs/hci/resources/";
 	public static final String	FX_ICON	= RSRC + "example/fx/icon/";
+	private static final double	W = 50;		// Item image width
+	private static final double	H = W * 1.5;	// Item image height
 
 	//**********************************************************************
 	// Public Class Methods (Resources)
@@ -84,6 +88,12 @@ public final class CoverItem extends StackPane
 
 	// TODO #08: Add members for the elements used in your item layout.
 	private Label					label;
+	private Label					title;
+	private Label					genre;
+	private Label					rating;
+	private Label					score;
+	private ImageView				poster;
+	private HBox					lrLayout;
 
 	//**********************************************************************
 	// Constructors and Finalizer
@@ -164,7 +174,23 @@ public final class CoverItem extends StackPane
 		label.setRotate(45.0);
 
 		// You can use more levels of pane to allow application of extra effects
+		Rectangle rect = new Rectangle(50,50, Color.GOLD);
 		StackPane	pane = new StackPane(label);
+		rating = new Label();
+		score = new Label();
+		title = new Label();
+		poster = new ImageView();
+		lrLayout = new HBox();
+		lrLayout.setBackground(new Background(new BackgroundFill(Color.GOLD, null, null)));
+		VBox ratingScoreLayout = new VBox();
+		ratingScoreLayout.setAlignment(Pos.CENTER_RIGHT);
+		VBox posterTitleLayout = new VBox();
+		posterTitleLayout.setAlignment(Pos.CENTER);
+		ratingScoreLayout.getChildren().addAll(rating, score);
+		posterTitleLayout.getChildren().addAll(poster, title);
+		lrLayout.getChildren().addAll(ratingScoreLayout, posterTitleLayout);
+		pane.getChildren().addAll(lrLayout);
+		
 
 		pane.setEffect(new DropShadow());
 
@@ -177,10 +203,18 @@ public final class CoverItem extends StackPane
 		if (movie == null)
 		{
 			label.setText("");
+			title.setText("");
+			rating.setText("");
+			score.setText("");
+			poster.setImage(null);
 		}
 		else
 		{
 			label.setText(movie.getTitle());
+			title.setText(movie.getTitle());
+			rating.setText(movie.getRating());
+			score.setText(movie.getAverageReviewScore() + "/10");
+			poster.setImage(movie.getImageAsImage(FX_ICON, W, H));
 		}
 	}
 
@@ -189,13 +223,19 @@ public final class CoverItem extends StackPane
 	{
 		if (selected)	// Make the item appear brighter
 		{
-			label.setTextFill(Color.YELLOW);
-			label.setEffect(GLOW);
+			label.setText("");
+			lrLayout.setBackground(new Background(new BackgroundFill(Color.WHITE, new CornerRadii(5), null)));
 		}
 		else			// Make the item appear darker
 		{
+			
 			label.setTextFill(Color.WHITE);
 			label.setEffect(null);
+			title.setText("");
+			rating.setText("");
+			score.setText("");
+			poster.setImage(null);
+			lrLayout.setBackground(null);
 		}
 	}
 
@@ -207,10 +247,10 @@ public final class CoverItem extends StackPane
 	private void	registerPropertyListeners()
 	{
 		movie.titleProperty().addListener(this::handleChangeS);
-		//movie.imageProperty().addListener(this::handleChangeS);
+		movie.imageProperty().addListener(this::handleChangeS);
 
-		//movie.yearProperty().addListener(this::handleChangeI);
-		//movie.ratingProperty().addListener(this::handleChangeS);
+		movie.yearProperty().addListener(this::handleChangeI);
+		movie.ratingProperty().addListener(this::handleChangeS);
 		//movie.runtimeProperty().addListener(this::handleChangeI);
 
 		//movie.awardPictureProperty().addListener(this::handleChangeB);
@@ -218,7 +258,7 @@ public final class CoverItem extends StackPane
 		//movie.awardCinematographyProperty().addListener(this::handleChangeB);
 		//movie.awardActingProperty().addListener(this::handleChangeB);
 
-		//movie.averageReviewScoreProperty().addListener(this::handleChangeD);
+		movie.averageReviewScoreProperty().addListener(this::handleChangeD);
 		//movie.numberOfReviewsProperty().addListener(this::handleChangeI);
 		//movie.genreProperty().addListener(this::handleChangeI);
 
@@ -234,10 +274,10 @@ public final class CoverItem extends StackPane
 	private void	unregisterPropertyListeners()
 	{
 		movie.titleProperty().removeListener(this::handleChangeS);
-		//movie.imageProperty().removeListener(this::handleChangeS);
+		movie.imageProperty().removeListener(this::handleChangeS);
 
-		//movie.yearProperty().removeListener(this::handleChangeI);
-		//movie.ratingProperty().removeListener(this::handleChangeS);
+		movie.yearProperty().removeListener(this::handleChangeI);
+		movie.ratingProperty().removeListener(this::handleChangeS);
 		//movie.runtimeProperty().removeListener(this::handleChangeI);
 
 		//movie.awardPictureProperty().removeListener(this::handleChangeB);
@@ -245,7 +285,7 @@ public final class CoverItem extends StackPane
 		//movie.awardCinematographyProperty().removeListener(this::handleChangeB);
 		//movie.awardActingProperty().removeListener(this::handleChangeB);
 
-		//movie.averageReviewScoreProperty().removeListener(this::handleChangeD);
+		movie.averageReviewScoreProperty().removeListener(this::handleChangeD);
 		//movie.numberOfReviewsProperty().removeListener(this::handleChangeI);
 		//movie.genreProperty().removeListener(this::handleChangeI);
 

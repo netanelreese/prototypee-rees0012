@@ -22,6 +22,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.*;
 import javafx.event.*;
+import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.effect.*;
@@ -93,8 +94,8 @@ public final class CoverFlow extends AbstractPane
 	private Button rightOne;
 	private Button rightFive;
 	private Button rightAll;
-	private Group left;
-	private Group right;
+	private VBox left;
+	private VBox right;
 	// Handlers
 	private final ActionHandler		actionHandler;
 
@@ -222,15 +223,19 @@ public final class CoverFlow extends AbstractPane
 		leftOne = new Button("<");
 		leftFive = new Button("<<");
 		leftAll = new Button("<<<");
-		left = new Group();
+		left = new VBox();
+		left.setAlignment(Pos.CENTER);
+		left.setSpacing(5);
 		left.getChildren().addAll(leftOne, leftFive, leftAll);
-		flow.getChildren().add(leftOne);
+		base.getChildren().add(left);
 		rightOne = new Button(">");
 		rightFive = new Button(">>");
 		rightAll = new Button(">>>");
-		right = new Group();
+		right = new VBox();
+		right.setSpacing(5);
+		right.setAlignment(Pos.CENTER);
 		right.getChildren().addAll(rightOne, rightFive, rightAll);
-		flow.getChildren().add(right);
+		base.getChildren().add(right);
 		
 		return base;
 	}
@@ -406,10 +411,10 @@ public final class CoverFlow extends AbstractPane
 		// your buttons below. Apply the expected enabling/disabling to each
 		// one. One way to do this is to use the flow's width and height to
 		// calculate absolute positions and sizes for each button.
-		leftOne.setTranslateX(cx);
-		leftOne.setTranslateY(cy);
-		right.setTranslateX(cx);
-		right.setTranslateY(cy);
+		left.setTranslateX(cx-600);
+		left.setTranslateY(cy-80);
+		right.setTranslateX(cx-20);
+		right.setTranslateY(cy-80);
 	}
 
 	private void	updateAnimation(Movie movie)
@@ -462,6 +467,45 @@ public final class CoverFlow extends AbstractPane
 
 			// TODO #07a: Update which movie is selected in the model, based on
 			// which button was clicked, following the design specification.
+			if (source == leftOne) {
+				if (movies.indexOf(movie) <= 1) {
+					controller.setProperty("movie", (movies.get(0)));
+				}
+				else {
+					controller.setProperty("movie", (movies.get(movies.indexOf(movie)-1)));
+				}
+			}
+			else if (source == leftFive) {
+				if (movies.indexOf(movie) <= 5) {
+					controller.setProperty("movie", (movies.get(0)));
+				}
+				else {
+					controller.setProperty("movie", (movies.get(movies.indexOf(movie)-5)));
+				}
+			}
+			else if (source == leftAll) {
+					controller.setProperty("movie", (movies.get(0)));
+
+			}
+			else if (source == rightOne) {
+				if (movies.indexOf(movie) >= movies.size() - 1) {
+					controller.setProperty("movie", (movies.get(movies.size()-1)));
+				}
+				else {
+					controller.setProperty("movie", (movies.get(movies.indexOf(movie)+1)));
+				}
+			}
+			else if (source == rightFive) {
+				if (movies.indexOf(movie) >= movies.size() - 5) {
+					controller.setProperty("movie", (movies.get(movies.size()-1)));
+				}
+				else {
+					controller.setProperty("movie", (movies.get(movies.indexOf(movie)+5)));
+				}
+			}
+			else if (source == rightAll) {
+				controller.setProperty("movie", (movies.get(movies.size()-1)));
+			}
 		}
 	}
 
@@ -512,7 +556,48 @@ public final class CoverFlow extends AbstractPane
 		// which key was pressed, similar to how the buttons work.
 		// Use HOME for first, END for last, PAGE UP for +5, PAGE DOWN
 		// for -5, LEFT ARROW for -1, RIGHT ARROW for +1.
+		//System.out.println(e.getCode().getName());
+		if (e.getCode().getName() == "Left") {
+			if (movies.indexOf(movie) <= 1) {
+				controller.setProperty("movie", (movies.get(0)));
+			}
+			else {
+				controller.setProperty("movie", (movies.get(movies.indexOf(movie)-1)));
+			}
+		}
+		else if (e.getCode().getName() == "Page Down") {
+			if (movies.indexOf(movie) <= 5) {
+				controller.setProperty("movie", (movies.get(0)));
+			}
+			else {
+				controller.setProperty("movie", (movies.get(movies.indexOf(movie)-5)));
+			}
+		}
+		else if (e.getCode().getName() == "Home") {
+				controller.setProperty("movie", (movies.get(0)));
 
+		}
+		else if (e.getCode().getName() == "Right") {
+			if (movies.indexOf(movie) >= movies.size() - 1) {
+				controller.setProperty("movie", (movies.get(movies.size()-1)));
+			}
+			else {
+				controller.setProperty("movie", (movies.get(movies.indexOf(movie)+1)));
+			}
+		}
+		else if (e.getCode().getName() == "Page Up") {
+			if (movies.indexOf(movie) >= movies.size() - 5) {
+				controller.setProperty("movie", (movies.get(movies.size()-1)));
+			}
+			else {
+				controller.setProperty("movie", (movies.get(movies.indexOf(movie)+5)));
+			}
+		}
+		else if (e.getCode().getName() == "End") {
+			controller.setProperty("movie", (movies.get(movies.size()-1)));
+		}
+		
+		
 		e.consume();	// Consume all presses so they doesn't propagate up
 	}
 
